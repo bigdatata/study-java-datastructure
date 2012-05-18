@@ -31,7 +31,10 @@ public class MyLinkedList<AnyType> implements Iterable<AnyType> {
 		theSize=0;
 		modCount++;
 	}
-	
+	/**
+	 * 链表中数据的个数
+	 * @return
+	 */
 	public int size(){
 		return theSize;
 	}
