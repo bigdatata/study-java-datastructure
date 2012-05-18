@@ -14,6 +14,7 @@ public class MyArrayStack<AnyType> implements MyStack<AnyType> {
 	public MyArrayStack(int size){
 		initStack(size);
 	}
+	@SuppressWarnings("unchecked")
 	private void  initStack(int size){
 		if(size<=0){
 			size=DEFAULT_STACK_SIZE;
