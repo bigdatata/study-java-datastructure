@@ -1,7 +1,7 @@
-package analysis.in.java.chapter1;
+ï»¿package analysis.in.java.chapter1;
 
 /**
- * Îª¾ØÕó·½Ïò
+ * ä¸ºçŸ©é˜µæ–¹å‘
  * @author luotao
  *
  */

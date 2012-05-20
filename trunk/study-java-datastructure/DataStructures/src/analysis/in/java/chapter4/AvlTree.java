@@ -1,4 +1,4 @@
-package analysis.in.java.chapter4;
+﻿package analysis.in.java.chapter4;
 
 import analysis.in.java.util.UnderflowException;
 
@@ -118,14 +118,14 @@ public class AvlTree <AnyType extends Comparable<? super AnyType>>{
 	}
 	
 	/**
-	 * ɾ��һ���ڵ����Ҫ����������ʾ��
-	 * 1.�����null�ڵ㣬��ֱ�ӷ���null
-	 * 2.���ɾ����ֵ<��ǰ�ڵ㣬��ת��left�ڵ���еݹ�ɾ��
-	 * 3.���ɾ����ֵ>��ǰ�ڵ㣬��ת��right�ڵ���еݹ�ɾ��
-	 * 4.���ɾ����ֵΪ��ǰ�ڵ㣬�����ǰ�ڵ�ֻ��һ����������ֱ�ӷ��ظ�����
-	 * 5.���ɾ����ֵΪ��ǰ�ڵ㣬�ҵ�ǰ�ڵ��������������򽫵�ǰֵ����Ϊ����������С�Ľڵ�ֵ�����ݹ�����������ɾ���ýڵ�ֵ
-	 * 6.���������ô����ڵ��heightֵ
-	 * 7.�Դ����ڵ�������·�ת��������������ɾ�������п��ܳ��ֵ�����ƽ�����
+	 * 删除一个节点的主要步骤如下所示：
+	 * 1.如果是null节点，则直接返回null
+	 * 2.如果删除的值<当前节点，则转入left节点进行递归删除
+	 * 3.如果删除的值>当前节点，则转入right节点进行递归删除
+	 * 4.如果删除的值为当前节点，如果当前节点只有一个子树，则直接返回该子树
+	 * 5.如果删除的值为当前节点，且当前节点有两个子树，则将当前值更改为右子树中最小的节点值，并递归在右子树中删除该节点值
+	 * 6.重新修正该处理节点的height值
+	 * 7.对处理节点进行重新翻转处理，以修正在删除过程中可能出现的树不平衡情况
 	 * @param element
 	 * @param t
 	 * @return

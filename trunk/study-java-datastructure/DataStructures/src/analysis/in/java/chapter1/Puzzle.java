@@ -1,4 +1,4 @@
-package analysis.in.java.chapter1;
+ï»¿package analysis.in.java.chapter1;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -54,8 +54,8 @@ public class Puzzle {
 	}
 
 	/**
-	 * ·µ»Ø´Ó¿ªÊ¼×ø±êÎª(beginRow,beginColumn) ·½ÏòÎªorient ×Ö³¤ÎªwordLength µÄ×Ö·û´®¼°ÔÚÊı×é¿ªÊ¼½áÊøÎ»ÖÃ ÒÔ
-	 * '&'ºÅ·Ö¸ô¿ª,Èç¹ûÔ½½çµÄÖ±½Ó·Å»Ø""
+	 * è¿”å›ä»å¼€å§‹åæ ‡ä¸º(beginRow,beginColumn) æ–¹å‘ä¸ºorient å­—é•¿ä¸ºwordLength çš„å­—ç¬¦ä¸²åŠåœ¨æ•°ç»„å¼€å§‹ç»“æŸä½ç½® ä»¥
+	 * '&'å·åˆ†éš”å¼€,å¦‚æœè¶Šç•Œçš„ç›´æ¥æ”¾å›""
 	 * @param beginRow
 	 * @param beginColumn
 	 * @param wordLength
@@ -65,7 +65,7 @@ public class Puzzle {
 	public String getPotentialWordAndPath(int beginRow,int beginColumn,int wordLength,Orientation orient){
 		int endRow=beginRow+(wordLength-1)*orient.x;
 		int endColumn=beginColumn+(wordLength-1)*orient.y;
-		//ÅĞ¶ÏÊı×éÏÂ±êÎ»ÖÃ
+		//åˆ¤æ–­æ•°ç»„ä¸‹æ ‡ä½ç½®
 		boolean isIndexOutOfBound=(endRow<0||endRow>=rowSize)||(endColumn<0||endColumn>=columnSize)||
 		(beginRow<0||beginRow>=rowSize)||(beginColumn<0||beginColumn>=columnSize);
 		if(isIndexOutOfBound){
@@ -76,8 +76,8 @@ public class Puzzle {
 	}
 	
 	/**
-	 * ·µ»Ø´Ó¿ªÊ¼×ø±êÎª(beginRow,beginColumn) ·½ÏòÎªorient ×Ö³¤ÎªwordLength µÄ×Ö·û´®
-	 * Ê¹ÓÃÇ°ÒªÅĞ¶ÏÊı×éÔ½½ç
+	 * è¿”å›ä»å¼€å§‹åæ ‡ä¸º(beginRow,beginColumn) æ–¹å‘ä¸ºorient å­—é•¿ä¸ºwordLength çš„å­—ç¬¦ä¸²
+	 * ä½¿ç”¨å‰è¦åˆ¤æ–­æ•°ç»„è¶Šç•Œ
 	 * @param beginRow
 	 * @param beginColumn
 	 * @param wordLength
