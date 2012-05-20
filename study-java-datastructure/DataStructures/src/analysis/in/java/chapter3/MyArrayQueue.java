@@ -1,4 +1,4 @@
-package analysis.in.java.chapter3;
+ï»¿package analysis.in.java.chapter3;
 
 public class MyArrayQueue<AnyType> implements MyQueue<AnyType> {
 
@@ -46,7 +46,7 @@ public class MyArrayQueue<AnyType> implements MyQueue<AnyType> {
 	@Override
 	public void enqueue(AnyType element) {
 		if(currentSize==capacity){
-			System.out.println("¶ÓÁÐÒÑÂú");
+			System.out.println("é˜Ÿåˆ—å·²æ»¡");
 			return ;
 		}
 		currentSize++;

@@ -22,7 +22,7 @@ public class BinaryTreeTest {
 		
 	}
 	/**
-	 * 由后缀表达式得到表达式树
+	 * get express tree from postExpress
 	 * @param postExpress
 	 * @return
 	 */

@@ -1,4 +1,4 @@
-package analysis.in.java.chapter3;
+ï»¿package analysis.in.java.chapter3;
 
 public class MyArrayStack<AnyType> implements MyStack<AnyType> {
 
@@ -44,9 +44,9 @@ public class MyArrayStack<AnyType> implements MyStack<AnyType> {
 			theArray[++position]=element;
 		}else{
 			/**
-			 * ´¦ÀíÕ»Òç³ö£¬ÓĞÁ½ÖÖ·½Ê½£¬Ò»ÊÇ²»´¦ÀíÅ×³öÒì³££¬¶şÊÇÔö¼ÓÕ»¿Õ¼ä£¬ÈıÊÇ¶şÕßµÄ½áºÏ
-			 *ÏÈÔö¼Ó£¬Èç¹û´ïµ½×î´óÕ»¿Õ¼äºó£¬»¹Õ»¿Õ¼äÂú£¬ÔòÅ×³öÒì³£.ÕâÀïÎªÁË¼ò±ãÖ±½ÓÊäÈëÕ»
-			 *Âú¡£
+			 * å¤„ç†æ ˆæº¢å‡ºï¼Œæœ‰ä¸¤ç§æ–¹å¼ï¼Œä¸€æ˜¯ä¸å¤„ç†æŠ›å‡ºå¼‚å¸¸ï¼ŒäºŒæ˜¯å¢åŠ æ ˆç©ºé—´ï¼Œä¸‰æ˜¯äºŒè€…çš„ç»“åˆ
+			 *å…ˆå¢åŠ ï¼Œå¦‚æœè¾¾åˆ°æœ€å¤§æ ˆç©ºé—´åï¼Œè¿˜æ ˆç©ºé—´æ»¡ï¼Œåˆ™æŠ›å‡ºå¼‚å¸¸.è¿™é‡Œä¸ºäº†ç®€ä¾¿ç›´æ¥è¾“å…¥æ ˆ
+			 *æ»¡ã€‚
 			 */
 			System.out.println("stack is full");
 			

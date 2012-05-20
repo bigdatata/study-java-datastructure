@@ -1,4 +1,4 @@
-package analysis.in.java.chapter3;
+ï»¿package analysis.in.java.chapter3;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -10,7 +10,7 @@ public class StackApplication {
 	}
 
 	/**
-	 * ÅĞ¶Ï´óÀ¨ºÅ£¬Ğ¡À¨ºÅµÄÆ¥ÅäÎÊÌâ
+	 * åˆ¤æ–­å¤§æ‹¬å·ï¼Œå°æ‹¬å·çš„åŒ¹é…é—®é¢˜
 	 * 
 	 * @param input
 	 * @return
@@ -34,10 +34,10 @@ public class StackApplication {
 	}
 
 	/**
-	 * ·µ»Øºó×º±í´ïÊ½expressµÄÖµ
+	 * è¿”å›åç¼€è¡¨è¾¾å¼expressçš„å€¼
 	 * 
 	 * @param express
-	 *            ÊäÈëÊÇºó×º±í´ïÊ½£¬ÓÃ¿Õ¸ñ¸ô¿ª
+	 *            è¾“å…¥æ˜¯åç¼€è¡¨è¾¾å¼ï¼Œç”¨ç©ºæ ¼éš”å¼€
 	 * @return
 	 */
 	public static double calculatePostfixExpression(String express) {
@@ -57,10 +57,10 @@ public class StackApplication {
 	}
 
 	/**
-	 *½«ÖĞ×º±í´ïÊ½×ª»¯Îªºó×º±í´ïÊ½
+	 *å°†ä¸­ç¼€è¡¨è¾¾å¼è½¬åŒ–ä¸ºåç¼€è¡¨è¾¾å¼
 	 * 
 	 * @param input
-	 *            ÖĞ×º±í´ïÊ½
+	 *            ä¸­ç¼€è¡¨è¾¾å¼
 	 * @return
 	 */
 	public static String infixToPostfixExpression(String input) {
@@ -69,20 +69,20 @@ public class StackApplication {
 		String[] inputs = input.split(" ");
 		for (String temp : inputs) {
 			boolean isOperator = isOperator2(temp);
-			// Êı×ÖÖ±½ÓÊä³ö
+			// æ•°å­—ç›´æ¥è¾“å‡º
 			if (!isOperator) {
 				postfix.append(temp).append(" ");
 			} else if (!temp.equals(")")) {
 				/**
-				 * ±È½Ï²Ù×÷·ûÕ»¶¥µÄÔªËØÓëÏÖÔÚµÄ²Ù×÷·ûµÄÓÅÏÈ¼¶ 
-				 * Èç¹ûÕ»¶¥µÄ²Ù×÷·ûµÄÓÅÏÈ¼¶¸ü¸ßÔòÕâ¸ö²Ù×÷·û³öÕ»£¬²¢·Åµ½ÊäÈëµ±ÖĞ
+				 * æ¯”è¾ƒæ“ä½œç¬¦æ ˆé¡¶çš„å…ƒç´ ä¸ç°åœ¨çš„æ“ä½œç¬¦çš„ä¼˜å…ˆçº§ 
+				 * å¦‚æœæ ˆé¡¶çš„æ“ä½œç¬¦çš„ä¼˜å…ˆçº§æ›´é«˜åˆ™è¿™ä¸ªæ“ä½œç¬¦å‡ºæ ˆï¼Œå¹¶æ”¾åˆ°è¾“å…¥å½“ä¸­
 				 */
 				while (!operators.isEmpty() && comparePrivilege(operators.top(), temp)) {
 					postfix.append(operators.pop()).append(" ");
 				}
 				operators.push(temp);
 			} else {
-				// ´¦ÀíÓÒÀ¨ºÅ
+				// å¤„ç†å³æ‹¬å·
 				while(!operators.top().equals("(")){
 					postfix.append(operators.pop()).append(" ");
 				}
@@ -99,10 +99,10 @@ public class StackApplication {
 	}
 
 	/**
-	 * ¸ù¾İ²Ù×÷·ûµÄ²»Í¬£¬·µ»Øfirst£¬second¾­¹ı¼ÆËãºóµÄÖµ
-	 * @param first µÚÒ»¸öÊı×Ö
-	 * @param second µÚ¶ş¸öÊı×Ö
-	 * @param operator ²Ù×÷·û
+	 * æ ¹æ®æ“ä½œç¬¦çš„ä¸åŒï¼Œè¿”å›firstï¼Œsecondç»è¿‡è®¡ç®—åçš„å€¼
+	 * @param first ç¬¬ä¸€ä¸ªæ•°å­—
+	 * @param second ç¬¬äºŒä¸ªæ•°å­—
+	 * @param operator æ“ä½œç¬¦
 	 * @return
 	 */
 	public static double calculate(double first, double second, String operator) {
@@ -122,9 +122,9 @@ public class StackApplication {
 	}
 
 	/**
-	 * ÂıÒ»µã ±ÈisOperator2
-	 * ÅĞ¶ÏÊäÈëÊÇ²»ÊÇ²Ù×÷·û£¬
-	 * ²Ù×÷°üÀ¨+,-,*,/,(,)
+	 * æ…¢ä¸€ç‚¹ æ¯”isOperator2
+	 * åˆ¤æ–­è¾“å…¥æ˜¯ä¸æ˜¯æ“ä½œç¬¦ï¼Œ
+	 * æ“ä½œåŒ…æ‹¬+,-,*,/,(,)
 	 * @param input
 	 * @return
 	 */
@@ -136,8 +136,8 @@ public class StackApplication {
 	}
 
 	/**
-	 * ÅĞ¶ÏÊäÈëÊÇ²»ÊÇ²Ù×÷·û£¬
-	 * ²Ù×÷°üÀ¨+,-,*,/,(,)
+	 * åˆ¤æ–­è¾“å…¥æ˜¯ä¸æ˜¯æ“ä½œç¬¦ï¼Œ
+	 * æ“ä½œåŒ…æ‹¬+,-,*,/,(,)
 	 * @param input
 	 * @return
 	 */
@@ -147,14 +147,14 @@ public class StackApplication {
 	}
 
 	/**
-	 * ±È½ÏÁ½¸ö²Ù×÷·ûµÄÓÅÏÈ¼¶
-	 * +,-È¨ÖØÖµÎª0
-	 * *,/È¨ÖØÖµÎª1
-	 * µÚÒ»¸ö²Ù×÷·ûÎª(Ê±,(µÄÈ¨ÖØÖµÎª-1
-	 * µÚ¶ş¸ö²Ù×÷·ûÎª(Ê±,(µÄÈ¨ÖØÖµÎª2
+	 * æ¯”è¾ƒä¸¤ä¸ªæ“ä½œç¬¦çš„ä¼˜å…ˆçº§
+	 * +,-æƒé‡å€¼ä¸º0
+	 * *,/æƒé‡å€¼ä¸º1
+	 * ç¬¬ä¸€ä¸ªæ“ä½œç¬¦ä¸º(æ—¶,(çš„æƒé‡å€¼ä¸º-1
+	 * ç¬¬äºŒä¸ªæ“ä½œç¬¦ä¸º(æ—¶,(çš„æƒé‡å€¼ä¸º2
 	 * @param first
 	 * @param second
-	 * @return µ±µÚÒ»¸ö²Ù×÷·ûµÄÈ¨ÖØÖµ²»Ğ¡ÓÚµÚ¶ş¸ö²Ù×÷·ûµÄÈ¨ÖØÖµÊ±·µ»Øtrue
+	 * @return å½“ç¬¬ä¸€ä¸ªæ“ä½œç¬¦çš„æƒé‡å€¼ä¸å°äºç¬¬äºŒä¸ªæ“ä½œç¬¦çš„æƒé‡å€¼æ—¶è¿”å›true
 	 */
 	private static boolean comparePrivilege(String first, String second) {
 		int firstWeight = 0, secondWeight = 0;
