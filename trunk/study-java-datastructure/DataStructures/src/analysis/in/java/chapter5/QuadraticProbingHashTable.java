@@ -3,27 +3,28 @@ package analysis.in.java.chapter5;
 public class QuadraticProbingHashTable<AnyType> implements MyHashTable<AnyType>{
 
 	public QuadraticProbingHashTable(){
-		
+		this(DEFAULT_TABLE_SIZE);
 	}
 	public QuadraticProbingHashTable(int size){
-		
+		allocateArray(size);
+		makeEmpty();
 	}
 	@Override
 	public boolean contains(AnyType x) {
-		int position = findPos(x);
+		int position = getPosition(x);
 		return isActive(position);
 	}
 
 	@Override
 	public void insert(AnyType x) {
-		int position = findPos(x);
+		int position = getPosition(x);
 		if(isActive(position)){
 			return ;
 		}
 		array[position] = new HashEntry<AnyType>(x);
 		//Rehash; see Section 5.5
 		if(++currentSize>getTableSize()/2){
-			
+			rehash();
 		}
 	}
 
@@ -37,7 +38,7 @@ public class QuadraticProbingHashTable<AnyType> implements MyHashTable<AnyType>{
 
 	@Override
 	public void remove(AnyType x) {
-		int position = findPos(x);
+		int position = getPosition(x);
 		if(isActive(position)){
 			array[position].isActive=false;
 		}
@@ -62,14 +63,17 @@ public class QuadraticProbingHashTable<AnyType> implements MyHashTable<AnyType>{
 	private int currentSize;
 	
 	private void allocateArray(int arraySize){
-		
+		if(arraySize<=0){
+			arraySize=DEFAULT_TABLE_SIZE;
+		}
+		array=new HashEntry[arraySize];
 	}
 	
 	private boolean isActive(int currentPos){
 		return null!=array[currentPos]&&!array[currentPos].isActive;
 	}
 	
-	private int findPos(AnyType x){
+	private int getPosition(AnyType x){
 		int offset=1;
 		int position=myhash(x);
 		while(null!=array[position]&&!array[position].equals(x)){
@@ -83,7 +87,16 @@ public class QuadraticProbingHashTable<AnyType> implements MyHashTable<AnyType>{
 	}
 	
 	private void rehash(){
-		
+		HashEntry<AnyType>[] oldArray=array;
+		int oldSize=getTableSize();
+		allocateArray(nextPrime(2*oldSize));
+		currentSize=0;
+		//copy table over
+		for(int i=0;i<oldSize;i++){
+			if(null!=oldArray[i]&&oldArray[i].isActive){
+				insert(oldArray[i].element);
+			}
+		}
 	}
 	
 	private int myhash(AnyType x){
@@ -98,7 +111,6 @@ public class QuadraticProbingHashTable<AnyType> implements MyHashTable<AnyType>{
 	private int getTableSize(){
 		return array.length;
 	}
-	
 	/**
 	 * Internal method to find a prime number at least as large as n.
 	 * 
@@ -135,5 +147,4 @@ public class QuadraticProbingHashTable<AnyType> implements MyHashTable<AnyType>{
 
 		return true;
 	}
-
 }

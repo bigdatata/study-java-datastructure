@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-public class SeparateChainingHashTable<AnyType> {
+public class SeparateChainingHashTable<AnyType> implements MyHashTable<AnyType>{
 	/**
 	 * Construct the hash table.
 	 */
@@ -31,6 +31,7 @@ public class SeparateChainingHashTable<AnyType> {
 	 * @param x
 	 *            the item to insert.
 	 */
+	@Override
 	public void insert(AnyType x) {
 		List<AnyType> whichList = theLists[myhash(x)];
 		if(!whichList.contains(x)){
@@ -49,6 +50,7 @@ public class SeparateChainingHashTable<AnyType> {
 	 * @param x
 	 *            the item to remove.
 	 */
+	@Override
 	public void remove(AnyType x) {
 		List<AnyType> whichList = theLists[myhash(x)];
 		if(whichList.contains(x)){
@@ -57,6 +59,7 @@ public class SeparateChainingHashTable<AnyType> {
 		}
 	}
 
+	@Override
 	public boolean contains(AnyType x){
 		List<AnyType> whichList = theLists[myhash(x)];
 		return whichList.contains(x);
@@ -65,6 +68,7 @@ public class SeparateChainingHashTable<AnyType> {
 	/**
 	 * Make the hash table logically empty.
 	 */
+	@Override
 	public void makeEmpty() {
 		for (int i = 0; i < theLists.length; i++)
 			theLists[i].clear();
@@ -86,9 +90,22 @@ public class SeparateChainingHashTable<AnyType> {
 		}
 		return hashVal;
 	}
-	
+	/**
+	 * Rehashing for separate chaining hash table.
+	 */
 	private void rehash(){
-		
+		List<AnyType>[] oldLists=theLists;
+		//create new double-sized,empty table
+		theLists=new List[nextPrime(2*theLists.length)];
+		for(int i=0;i<theLists.length;i++){
+			theLists[i] = new LinkedList<AnyType>();
+		}
+		//copy table over
+		for(int i=0;i<oldLists.length;i++){
+			for(AnyType element:oldLists[i]){
+				insert(element);
+			}
+		}
 	}
 
 	/**
