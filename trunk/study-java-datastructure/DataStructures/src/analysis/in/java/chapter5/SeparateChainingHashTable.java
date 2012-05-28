@@ -36,9 +36,9 @@ public class SeparateChainingHashTable<AnyType> {
 		if(!whichList.contains(x)){
 			whichList.add(x);
 			//Rehash; see Section 5.5
-			if(++currentSize>theLists.length){
-				rehash();
-			}
+//			if(++currentSize>theLists.length){
+//				rehash();
+//			}
 		}
 			
 	}
@@ -127,7 +127,6 @@ public class SeparateChainingHashTable<AnyType> {
 
 		for (; !isPrime(n); n += 2)
 			;
-
 		return n;
 	}
 
