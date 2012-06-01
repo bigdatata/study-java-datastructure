@@ -8,18 +8,19 @@ public class Sort {
 	 */
 	public static <AnyType extends Comparable<? super AnyType>>
 	void insertSort(AnyType[] a){
-		if(null==a){
-			return;
-		}
-		int j;
-		AnyType temp;
-		for(int i=1;i<a.length;i++){
-			temp=a[i];
-			for(j=i;j>0&&temp.compareTo(a[j-1])<0;j--){
-				a[j]=a[j-1];
-			}
-			a[j]=temp;
-		}
+//		if(null==a){
+//			return;
+//		}
+//		int j;
+//		AnyType temp;
+//		for(int i=1;i<a.length;i++){
+//			temp=a[i];
+//			for(j=i;j>0&&temp.compareTo(a[j-1])<0;j--){
+//				a[j]=a[j-1];
+//			}
+//			a[j]=temp;
+//		}
+		insertionSort(a,0,a.length-1);
 	}
 	/**
 	 * Shell sort using Shell's (poor) increments.
@@ -89,7 +90,7 @@ public class Sort {
 	public static <AnyType extends Comparable<? super AnyType>>
 	void mergeSort(AnyType[] a){
 		AnyType[] tempArray=(AnyType[])new Comparable[a.length];
-		mergeSort(a,tempArray,0,a.length);
+		mergeSort(a,tempArray,0,a.length-1);
 	}
 	/**
 	 * Internal method that makes recursive calls.
@@ -103,7 +104,7 @@ public class Sort {
 		if(left<right){
 			int middle=(left+right)/2;
 			mergeSort(a,temp,left,middle);
-			mergeSort(a,temp,middle,right);
+			mergeSort(a,temp,middle+1,right);
 			merge(a,temp,left,middle+1,right);
 		}
 	}
@@ -119,7 +120,7 @@ public class Sort {
 	void merge(AnyType[] a,AnyType[] temp,int leftPos,int rightPos,int rightEnd){
 		int i=leftPos,j=rightPos,leftEnd=rightPos-1,k=leftPos;
 		while(i<=leftEnd&&j<=rightEnd){
-			if(a[i].compareTo(a[j])>=0){
+			if(a[i].compareTo(a[j])<=0){
 				temp[k++]=a[i++];
 			}else{
 				temp[k++]=a[j++];
@@ -141,7 +142,7 @@ public class Sort {
 	 */
 	public static <AnyType extends Comparable<? super AnyType>>
 	void quickSort(AnyType[] a){
-		
+		quickSort(a,0,a.length-1);
 	}
 	/**
 	 * Return median of left,center and right.
@@ -218,5 +219,24 @@ public class Sort {
 		}
 	}
 	
-	
+	/**
+	 * 
+	 * @param a a list of positive int number.
+	 * @param max this element is no less than any element in a
+	 */
+	public static void bucketSort(int[] a,int max ){
+		int[] counts=new int[max+1];
+		for(int i=0;i<=max;i++){
+			counts[i]=0;
+		}
+		for(int element:a){
+			counts[element]++;
+		}
+		int index=0;
+		for(int i=0;i<=max;i++){
+			for(int j=0;j<counts[i];j++){
+				a[index++]=i;
+			}
+		}
+	}
 }
